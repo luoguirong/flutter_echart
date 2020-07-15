@@ -29,13 +29,13 @@
 
 @end
 
-@interface FlutterNativeWebController()<UIWebViewDelegate,FlutterStreamHandler>{
+@interface FlutterNativeWebController()<WKNavigationDelegate,FlutterStreamHandler>{
     
 }
 @end
 
 @implementation FlutterNativeWebController {
-    UIWebView* _webView;
+    WKWebView* _webView;
     int64_t _viewId;
     FlutterEventSink startEventSink;
     FlutterEventSink finishEventSink;
@@ -53,8 +53,8 @@
                   binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
     if ([super init]) {
         _viewId = viewId;
-        _webView = [[UIWebView alloc] initWithFrame:frame];
-        _webView.delegate=self;
+        _webView = [[WKWebView alloc] initWithFrame:frame];
+        _webView.navigationDelegate=self;
         _webView.multipleTouchEnabled = YES;
         _webView.userInteractionEnabled = YES;
         _webView.scrollView.scrollEnabled = YES;
