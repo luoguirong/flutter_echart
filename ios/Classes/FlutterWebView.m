@@ -53,7 +53,7 @@
                   binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
     if ([super init]) {
         _viewId = viewId;
-        _webView = [[WKWebView alloc] initWithFrame:frame];
+        _webView = [[WKWebView alloc] initWithFrame:frame configuration:[WKWebViewConfiguration new]];
         _webView.navigationDelegate=self;
         _webView.multipleTouchEnabled = YES;
         _webView.userInteractionEnabled = YES;
